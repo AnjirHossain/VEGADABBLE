@@ -1,8 +1,112 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  margin: 50px;
 }
 
-a {
-  color: #00B7FF;
+i.fa,
+i.fa:hover {
+  font-size: 30px;
+}
+
+#bigTitle {
+  font-weight: bold;
+}
+
+a,
+a:hover,
+i.fa,
+i.fa:hover,
+#bigTitle.blue {
+  color: #50ABF1;
+}
+#bigTitle.green {
+  color: #23E363;
+}
+
+label {
+  margin: 10px;
+}
+
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  -moz-transform: translate(-50%,-50%);
+  -o-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+}
+
+.no-margin {
+  margin: 0 !important;
+}
+.no-padding {
+  padding: 0 !important;
+}
+
+/*
+  would usually override all bootstrap button styling
+*/
+.btn-primary,
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: #50ABF1 !important;
+  border-color: #50ABF1;
+}
+
+.btn:focus {
+  outline: 2px solid lightblue;
+}
+
+.btn-success,
+.btn-success:hover,
+.btn-success:focus {
+  background-color: #23E363 !important;
+  border-color: #23E363;
+}
+
+form {
+  margin: 50px 0;
+}
+.form-control {
+  border-radius: 0px !important;
+}
+
+/* styling vega generated dom */
+.vega > canvas {
+  display: block;
+  margin: 0 auto !important;
+}
+.vega-actions {
+  text-align: center;
+}
+.vega-actions a {
+  text-decoration: none;
+  margin: 20px;
+}
+
+.facts-sect {
+  margin: 30px 0;
+}
+
+.fact {
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
+  position: relative;
+  display: block;
+  margin: 0 auto;
+}
+.fact-text {
+  font-weight: lighter;
+  color: #fff;
+}
+
+.fact-light {
+  background-color: rgb(127,190,235);
+}
+.fact-moderate {
+  background-color: rgb(76,126,159);
+}
+.fact-intense {
+  background-color: rgb(0,47,108);
 }
