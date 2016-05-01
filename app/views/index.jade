@@ -14,7 +14,7 @@ block content
     form#countyNameQuery(action="/county", class="text-center", method="post")
       label Enter county name to get details about that county 
       
-      input(name="countyname", type="text", class="form-control", placeholder="County")
+      input(name="countyname", type="text", class="form-control", placeholder="County", required="true")
       
       button(type="submit", class="form-control btn-success") Get Details
     
