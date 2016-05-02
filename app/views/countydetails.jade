@@ -45,38 +45,34 @@ block content
       button(type="submit", class="form-control btn-primary") Get Details
     
   script.
+    "use strict";
+
     {
-      'use strict';  
-      
+
       // parse & store detail object from jade
-      let details = {
+      var details = {
         fatalAccidents: parseInt("#{details.fatal_accidents}"),
         speedingCases: parseInt("#{details.speeding}"),
         totalFatalities: parseInt("#{details.total_fatalities}")
       };
-      
+
       // remodel details for grouped bar chart
-      let detailsAfterModel = [
-        {
-          "fieldType": "Speeding fatalities",
-          "fieldContent": details.speedingCases
-        },
-        {
-          "fieldType": "Other causes",
-          "fieldContent": details.fatalAccidents - details.speedingCases
-        },
-        {
-          "fieldType": "Fatal Accidents",
-          "fieldContent": details.fatalAccidents
-        },
-        {
-          "fieldType": "Miscellaneous Deaths",
-          "fieldContent": details.totalFatalities - details.fatalAccidents
-        }
-      ];
-      
+      var detailsAfterModel = [{
+        "fieldType": "Speeding fatalities",
+        "fieldContent": details.speedingCases
+      }, {
+        "fieldType": "Other causes",
+        "fieldContent": details.fatalAccidents - details.speedingCases
+      }, {
+        "fieldType": "Fatal Accidents",
+        "fieldContent": details.fatalAccidents
+      }, {
+        "fieldType": "Miscellaneous Deaths",
+        "fieldContent": details.totalFatalities - details.fatalAccidents
+      }];
+
       // vega-lite specs
-      let specs = {
+      var specs = {
         "data": {
           "values": detailsAfterModel
         },
@@ -87,7 +83,7 @@ block content
             "type": "nominal",
             "sort": "none",
             "axis": {
-              "title": "% of deaths by speeding: " + Math.floor((details.speedingCases/details.fatalAccidents)*100) + "%"
+              "title": "% of deaths by speeding: " + Math.floor(details.speedingCases / details.fatalAccidents * 100) + "%"
             }
           },
           "y": {
@@ -106,15 +102,16 @@ block content
             }
           }
         }
-      }
-      
-      let embeddedSpecs = {
+      };
+
+      var embeddedSpecs = {
         mode: 'vega-lite',
         spec: specs
-      }
-      
+      };
+
       // embed visualization via vega-lite
-      vg.embed("#countyDetailViz", embeddedSpecs, (error, result) => {
+      vg.embed("#countyDetailViz", embeddedSpecs, function (error, result) {
         // result.views ready for usage
-      }); 
+      });
+      
     }
