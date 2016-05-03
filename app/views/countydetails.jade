@@ -45,17 +45,13 @@ block content
       button(type="submit", class="form-control btn-primary") Get Details
     
   script.
-    "use strict";
-
-    {
-
       // parse & store detail object from jade
       var details = {
         fatalAccidents: parseInt("#{details.fatal_accidents}"),
         speedingCases: parseInt("#{details.speeding}"),
         totalFatalities: parseInt("#{details.total_fatalities}")
       };
-
+      
       // remodel details for grouped bar chart
       var detailsAfterModel = [{
         "fieldType": "Speeding fatalities",
@@ -70,7 +66,7 @@ block content
         "fieldType": "Miscellaneous Deaths",
         "fieldContent": details.totalFatalities - details.fatalAccidents
       }];
-
+      
       // vega-lite specs
       var specs = {
         "data": {
@@ -103,15 +99,13 @@ block content
           }
         }
       };
-
+      
       var embeddedSpecs = {
         mode: 'vega-lite',
         spec: specs
       };
-
+      
       // embed visualization via vega-lite
       vg.embed("#countyDetailViz", embeddedSpecs, function (error, result) {
         // result.views ready for usage
       });
-      
-    }

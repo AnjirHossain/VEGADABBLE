@@ -1,6 +1,3 @@
-'use strict';
-
-{
   (function () {
 
     // wire up API fetching
@@ -68,4 +65,3 @@
 
     init();
   })();
-}
