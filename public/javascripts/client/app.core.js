@@ -1,7 +1,6 @@
   (function () {
 
-    // wire up API fetching
-
+    // fetch data from API endpoint
     var init = function init() {
       endPoint = 'http://mysafeinfo.com/api/data?list=fatalaccidentsbycounty_2013_wa&format=json&select=yr,st,cd,cty,cnt,sp,ttl&alias=yr=year,st=state_code,cd=county_code,cty=county_name,cnt=fatal_accidents,sp=speeding,ttl=total_fatalities';
       ajax = new XMLHttpRequest();
@@ -11,8 +10,6 @@
     };
 
     // maps contents of API to the view via vega-lite general visualizations
-
-
     var mapDataToScreen = function mapDataToScreen() {
       apiContents = JSON.parse(this.responseText);
 

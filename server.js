@@ -6,6 +6,8 @@ let favicon = require('serve-favicon');
 let logger = require('morgan');
 let cookieParser = require('cookie-parser');
 let bodyParser = require('body-parser');
+let flash = require('connect-flash');
+let session = require('express-session');
 let app = express();
 
 // view engine setup
@@ -20,6 +22,15 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({
+  secret: 'session for flash',
+  cookie: {
+    maxAge: 60000
+  },
+  resave: true,
+  saveUninitialized: true
+}));
+app.use(flash());
 
 let routes = require('./app/routes/index')(app);
 let countydetails = require('./app/routes/countydetails')(app);
@@ -56,6 +67,8 @@ app.use((err, req, res, next) => {
   });
 });
 
-app.listen(app.get('port'));
+app.listen(app.get('port'), () => {
+  console.log('Listening on localhost port: ', app.get('port'));
+});
 
 module.exports = app;
